@@ -1,16 +1,28 @@
-# React + Vite
+# Coffee Admin Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Setup
 
-Currently, two official plugins are available:
+npm install
+npm run server # terminal 1 (json-server on :3001)
+npm run dev # terminal 2 (vite on :5173)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Testing
 
-## React Compiler
+npm test
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Landing page (store info via Context)
+- Shop with live search + origin filter
+- Product detail route
+- Admin CRUD (create, edit price, delete)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech
+
+React 18, React Router v6, JSON Server, Vitest, React Testing Library
+
+## Known Limitations
+
+- No auth on /admin
+- JSON Server is a mock backend (data resets if db.json replaced)
+- No image support
