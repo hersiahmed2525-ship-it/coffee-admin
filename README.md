@@ -26,3 +26,4 @@ React 18, React Router v6, JSON Server, Vitest, React Testing Library
 - No auth on /admin
 - JSON Server is a mock backend (data resets if db.json replaced)
 - No image support
+
