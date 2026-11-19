@@ -1,0 +1,19 @@
+src/
+  api/products.js
+  hooks/useProducts.js
+  context/StoreContext.jsx
+  components/NavBar.jsx
+  components/ProductCard.jsx
+  components/ProductForm.jsx
+  components/ProductAdminRow.jsx
+  pages/HomePage.jsx
+  pages/ShopPage.jsx
+  pages/ProductDetailPage.jsx
+  pages/AdminPage.jsx
+  styles/main.css
+  test/setup.js
+  components/__tests__/ProductCard.test.jsx
+  components/__tests__/ProductForm.test.jsx
+  pages/__tests__/ShopPage.test.jsx
+db.json
+vitest.config.js
