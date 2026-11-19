@@ -11,7 +11,32 @@ export function useProducts() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const loadProducts = useCallback(async () => {
+  useEffect(() => {
+    let cancelled = false;
+
+    async function fetchData() {
+      setLoading(true);
+      try {
+        const data = await getProducts();
+        if (!cancelled) {
+          setProducts(data);
+          setError(null);
+        }
+      } catch (err) {
+        if (!cancelled) setError(err.message);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+
+    fetchData();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Manual reload (e.g. after a failed request)
+  const reload = useCallback(async () => {
     setLoading(true);
     try {
       const data = await getProducts();
@@ -23,10 +48,6 @@ export function useProducts() {
       setLoading(false);
     }
   }, []);
-
-  useEffect(() => {
-    loadProducts();
-  }, [loadProducts]);
 
   async function addProduct(product) {
     const created = await createProduct(product);
@@ -54,6 +75,6 @@ export function useProducts() {
     addProduct,
     editProduct,
     removeProduct,
-    reload: loadProducts,
+    reload,
   };
 }

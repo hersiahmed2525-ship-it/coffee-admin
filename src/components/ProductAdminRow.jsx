@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function ProductAdminRow({ product, onUpdate, onDelete }) {
   const [editing, setEditing] = useState(false);
   const [price, setPrice] = useState(product.price);
 
-  useEffect(() => {
-    setPrice(product.price);
-  }, [product.price]);
-
   async function save() {
     await onUpdate(product.id, { price: Number(price) });
+    setEditing(false);
+  }
+
+  function cancel() {
+    setPrice(product.price);
     setEditing(false);
   }
 
@@ -35,7 +36,7 @@ export default function ProductAdminRow({ product, onUpdate, onDelete }) {
         {editing ? (
           <>
             <button onClick={save}>Save</button>
-            <button onClick={() => setEditing(false)}>Cancel</button>
+            <button onClick={cancel}>Cancel</button>
           </>
         ) : (
           <button onClick={() => setEditing(true)}>Edit Price</button>

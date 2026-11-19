@@ -19,7 +19,7 @@ export function StoreProvider({ children }) {
     </StoreContext.Provider>
   );
 }
-
+// eslint-disable-next-line react-refresh/only-export-components
 export function useStore() {
   const context = useContext(StoreContext);
   if (!context) throw new Error("useStore must be used inside StoreProvider");

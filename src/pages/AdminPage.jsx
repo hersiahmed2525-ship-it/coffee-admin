@@ -32,7 +32,7 @@ export default function AdminPage() {
               <tbody>
                 {products.map((product) => (
                   <ProductAdminRow
-                    key={product.id}
+                    key={`${product.id}-${product.price}`}
                     product={product}
                     onUpdate={editProduct}
                     onDelete={removeProduct}
